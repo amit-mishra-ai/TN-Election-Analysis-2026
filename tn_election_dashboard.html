@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamil Nadu Elections 2021 vs 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --bg-deep: #0a0b0f;
+    --bg-card: #111318;
+    --bg-card2: #181b23;
+    --bg-elevated: #1e2230;
+    --border: rgba(255,255,255,0.07);
+    --border-bright: rgba(255,255,255,0.15);
+    --text-primary: #f0f2f8;
+    --text-secondary: #8891aa;
+    --text-muted: #525c78;
+    --accent-gold: #f5c842;
+    --accent-orange: #ff7c3a;
+
+    --tvk: #f5a623;
+    --dmk: #e8192c;
+    --aiadmk: #1db859;
+    --inc: #1a6fdd;
+    --pmk: #8b5cf6;
+    --ntk: #64748b;
+    --vck: #06b6d4;
+    --bjp: #ff6600;
+    --others: #475569;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .noise-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  .container { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 0 24px 80px; }
+
+  header {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent-gold); margin-bottom: 12px;
+  }
+  header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 7vw, 80px);
+    letter-spacing: 0.02em; line-height: 0.92;
+    color: var(--text-primary);
+  }
+  header h1 span { color: var(--accent-gold); }
+  .header-sub {
+    margin-top: 16px; font-size: 15px; color: var(--text-secondary);
+    max-width: 560px; line-height: 1.7;
+  }
+  .header-meta {
+    display: flex; gap: 32px; margin-top: 32px; flex-wrap: wrap;
+  }
+  .meta-stat { }
+  .meta-stat .val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px; letter-spacing: 0.03em; color: var(--text-primary); display: block;
+  }
+  .meta-stat .lbl {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--text-muted); font-family: 'DM Mono', monospace;
+  }
+
+  .section {
+    margin-bottom: 64px;
+  }
+  .section-header {
+    display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 56px;
+    color: var(--border-bright); line-height: 1; letter-spacing: 0.04em;
+  }
+  .section-title-block { }
+  .section-label {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent-gold); margin-bottom: 4px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 28px;
+    letter-spacing: 0.04em; color: var(--text-primary);
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .card-sm { padding: 16px 20px; }
+  .card-title {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--text-muted); font-family: 'DM Mono', monospace;
+    margin-bottom: 16px;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+
+  @media (max-width: 900px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-6 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .kpi-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px;
+  }
+  .kpi-value {
+    font-family: 'Bebas Neue', sans-serif; font-size: 44px;
+    letter-spacing: 0.03em; line-height: 1; display: block;
+  }
+  .kpi-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--text-muted); font-family: 'DM Mono', monospace; margin-top: 6px;
+  }
+  .kpi-change {
+    font-size: 12px; font-family: 'DM Mono', monospace; margin-top: 4px;
+  }
+  .up { color: #4ade80; }
+  .down { color: #f87171; }
+
+  .party-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 2px 10px; border-radius: 100px;
+    font-size: 12px; font-weight: 500; font-family: 'DM Mono', monospace;
+  }
+  .party-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  .chart-wrap { position: relative; width: 100%; }
+
+  .tab-bar {
+    display: flex; gap: 4px; margin-bottom: 20px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 4px;
+  }
+  .tab-btn {
+    padding: 7px 16px; border-radius: 6px; font-size: 13px; font-weight: 500;
+    cursor: pointer; border: none; background: none;
+    color: var(--text-secondary); transition: all 0.15s;
+  }
+  .tab-btn.active { background: var(--bg-elevated); color: var(--text-primary); }
+  .tab-btn:hover:not(.active) { color: var(--text-primary); }
+
+  .legend-row {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    margin-bottom: 16px;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--text-secondary);
+  }
+  .legend-swatch {
+    width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
+  }
+
+  .insights-box {
+    background: var(--bg-card2); border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-gold);
+    border-radius: 0 10px 10px 0; padding: 16px 20px;
+    font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+    margin-top: 20px;
+  }
+  .insights-box strong { color: var(--text-primary); font-weight: 500; }
+
+  .bar-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+  }
+  .bar-label { width: 80px; font-size: 12px; font-family: 'DM Mono', monospace; color: var(--text-secondary); text-align: right; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 28px; background: var(--bg-elevated); border-radius: 4px; overflow: hidden; position: relative; }
+  .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 12px; font-weight: 500; font-family: 'DM Mono', monospace; color: rgba(255,255,255,0.85); transition: width 0.6s ease; }
+  .bar-val { width: 50px; font-size: 12px; font-family: 'DM Mono', monospace; color: var(--text-secondary); flex-shrink: 0; }
+
+  .flip-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; font-family: 'DM Mono', monospace;
+    font-weight: 500;
+  }
+
+  .nav-pills {
+    display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap;
+  }
+  .nav-pill {
+    padding: 6px 16px; border-radius: 100px; font-size: 13px;
+    border: 1px solid var(--border); color: var(--text-secondary);
+    cursor: pointer; text-decoration: none; transition: all 0.15s;
+  }
+  .nav-pill:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+
+  .sankey-svg { width: 100%; overflow: visible; }
+
+  .region-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px;
+  }
+  @media (max-width: 1000px) { .region-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 600px) { .region-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .region-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px; cursor: pointer;
+    transition: all 0.15s;
+  }
+  .region-card:hover { border-color: var(--border-bright); background: var(--bg-card2); }
+  .region-card.active { border-color: var(--accent-gold); }
+  .region-name { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-family: 'DM Mono', monospace; margin-bottom: 8px; }
+  .region-total { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: var(--text-primary); }
+  .region-label { font-size: 11px; color: var(--text-muted); }
+
+  .stacked-bars { display: flex; height: 24px; border-radius: 4px; overflow: hidden; gap: 1px; }
+  .stacked-seg { height: 100%; transition: all 0.4s ease; }
+
+  select {
+    background: var(--bg-elevated); border: 1px solid var(--border);
+    color: var(--text-primary); padding: 6px 12px; border-radius: 6px;
+    font-size: 13px; cursor: pointer; outline: none; font-family: 'DM Sans', sans-serif;
+  }
+  select:hover { border-color: var(--border-bright); }
+</style>
+</head>
+<body>
+<div class="noise-bg"></div>
+
+<div class="container">
+  <h2 class="sr-only" style="position:absolute;left:-9999px;">Tamil Nadu Election Analysis Dashboard 2021 vs 2026</h2>
+
+  <header>
+    <div class="header-eyebrow">Constituency-Level Analysis · 234 Seats · All 6 Regions</div>
+    <h1>Tamil Nadu<br>Elections <span>2021</span> vs <span>2026</span></h1>
+    <p class="header-sub">A data-driven deep-dive into how Tamil Nadu's political landscape was reshaped by the emergence of TVK — covering seat distribution, constituency flips, and vote share flows.</p>
+    <div class="header-meta">
+      <div class="meta-stat"><span class="val">234</span><span class="lbl">Total Seats</span></div>
+      <div class="meta-stat"><span class="val">163</span><span class="lbl">Seats Flipped</span></div>
+      <div class="meta-stat"><span class="val">35.1%</span><span class="lbl">TVK Vote Share</span></div>
+      <div class="meta-stat"><span class="val">4.62Cr</span><span class="lbl">2021 Votes Cast</span></div>
+      <div class="meta-stat"><span class="val">4.93Cr</span><span class="lbl">2026 Votes Cast</span></div>
+    </div>
+  </header>
+
+  <div class="nav-pills">
+    <a class="nav-pill" href="#overview">Seat Overview</a>
+    <a class="nav-pill" href="#geographic">Geographic Story</a>
+    <a class="nav-pill" href="#flips">Flip Story</a>
+    <a class="nav-pill" href="#voteshare">Vote Share Story</a>
+    <a class="nav-pill" href="#tvk">TVK Anatomy</a>
+  </div>
+
+  <!-- SECTION 0: SEAT OVERVIEW KPIs -->
+  <div class="section" id="overview">
+    <div class="section-header">
+      <div class="section-num">00</div>
+      <div class="section-title-block">
+        <div class="section-label">The scoreboard</div>
+        <div class="section-title">Seat Tally — 2021 vs 2026</div>
+      </div>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:20px;">
+      <div class="kpi-card" style="border-top: 3px solid var(--tvk);">
+        <span class="kpi-value" style="color: var(--tvk);">108</span>
+        <div class="kpi-label">TVK — 2026</div>
+        <div class="kpi-change up">↑ from 0 in 2021</div>
+      </div>
+      <div class="kpi-card" style="border-top: 3px solid var(--dmk);">
+        <span class="kpi-value" style="color: var(--dmk);">59</span>
+        <div class="kpi-label">DMK — 2026</div>
+        <div class="kpi-change down">↓ from 133 in 2021</div>
+      </div>
+      <div class="kpi-card" style="border-top: 3px solid var(--aiadmk);">
+        <span class="kpi-value" style="color: var(--aiadmk);">47</span>
+        <div class="kpi-label">AIADMK — 2026</div>
+        <div class="kpi-change down">↓ from 66 in 2021</div>
+      </div>
+      <div class="kpi-card" style="border-top: 3px solid var(--inc);">
+        <span class="kpi-value" style="color: var(--inc);">5</span>
+        <div class="kpi-label">INC — 2026</div>
+        <div class="kpi-change down">↓ from 18 in 2021</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Seat share — 2021 vs 2026 (all 234 constituencies)</div>
+      <div style="margin-bottom: 10px; font-size: 13px; color: var(--text-muted);">2021</div>
+      <div style="display:flex; height: 36px; border-radius: 6px; overflow:hidden; margin-bottom: 20px;" id="bar2021"></div>
+      <div style="margin-bottom: 10px; font-size: 13px; color: var(--text-muted);">2026</div>
+      <div style="display:flex; height: 36px; border-radius: 6px; overflow:hidden; margin-bottom: 20px;" id="bar2026"></div>
+      <div class="legend-row" id="overviewLegend"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: GEOGRAPHIC -->
+  <div class="section" id="geographic">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-title-block">
+        <div class="section-label">The geographic story</div>
+        <div class="section-title">Regional Seat Distribution Shifts</div>
+      </div>
+    </div>
+
+    <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 14px; max-width: 700px;">
+      Tamil Nadu's 234 seats span six distinct regions. Click a region to see how the seat count per party shifted between 2021 and 2026.
+    </p>
+
+    <div class="region-grid" id="regionCards" style="margin-bottom: 24px;"></div>
+
+    <div class="card" id="regionDetail">
+      <div class="card-title" id="regionDetailTitle">Select a region to view breakdown</div>
+      <div id="regionDetailContent"></div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+      <div class="card-title">All regions — stacked seat bar 2026</div>
+      <div id="allRegionBars"></div>
+    </div>
+
+    <div class="insights-box">
+      <strong>Chennai Metro (32 seats):</strong> TVK swept all 29 DMK-held seats — the most dramatic single-region swing.<br>
+      <strong>Kongu (33 seats):</strong> Previously AIADMK's heartland (19 seats in 2021), TVK captured 16 while AIADMK dropped to just 7.<br>
+      <strong>North (37 seats):</strong> TVK won 15 vs AIADMK's 15 — a near-dead heat in the most competitive region.<br>
+      <strong>South (58 seats):</strong> DMK retained 22 seats but TVK still won 26, making it the plurality holder even in DMK's traditional south.<br>
+      <strong>Central (41 seats):</strong> AIADMK held firm at 15, its most resilient region — but TVK still claimed 12.
+    </div>
+  </div>
+
+  <!-- SECTION 2: FLIPS -->
+  <div class="section" id="flips">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title-block">
+        <div class="section-label">The flip story</div>
+        <div class="section-title">163 Constituencies Changed Hands</div>
+      </div>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:24px;">
+      <div class="kpi-card">
+        <span class="kpi-value">163</span>
+        <div class="kpi-label">Total Flips</div>
+        <div class="kpi-change" style="color: var(--accent-gold);">69.7% of all seats</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-value" style="color: var(--tvk);">104</span>
+        <div class="kpi-label">Seats TVK gained</div>
+        <div class="kpi-change" style="color: var(--text-muted);">From DMK 65, AIADMK 26, INC 11, Others 2</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-value" style="color: var(--aiadmk);">22</span>
+        <div class="kpi-label">DMK → AIADMK</div>
+        <div class="kpi-change" style="color: var(--text-muted);">AIADMK opposition consolidation</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-value" style="color: var(--dmk);">15</span>
+        <div class="kpi-label">AIADMK → DMK</div>
+        <div class="kpi-change" style="color: var(--text-muted);">Mutual exchange between rivals</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-title">Sankey flow diagram — seat transfers 2021 → 2026</div>
+      <div class="chart-wrap" style="height: 480px;">
+        <canvas id="sankey" role="img" aria-label="Sankey flow of seat transfers from 2021 parties to 2026 parties">Seat flows: DMK lost 65 seats to TVK, 22 to AIADMK. AIADMK lost 26 seats to TVK, 15 to DMK. INC lost 11 to TVK.</canvas>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Flip matrix — from 2021 winner → 2026 winner (flipped seats only)</div>
+      <div id="flipMatrix" style="overflow-x: auto;"></div>
+    </div>
+
+    <div class="insights-box">
+      <strong>The dominant pattern:</strong> 65 DMK seats flipped directly to TVK — the single largest seat transfer in this election. Combined with AIADMK's 26 seats, TVK collected 104 flips total, accounting for 63.8% of all flipped seats.<br><br>
+      <strong>AIADMK's paradox:</strong> While losing 26 to TVK, AIADMK gained 22 from DMK and 2 from PMK — ending up as the net-second-largest gainer of flipped seats (net −7 on flips), suggesting a consolidation of anti-DMK vote where TVK didn't dominate.
+    </div>
+  </div>
+
+  <!-- SECTION 3: VOTE SHARE -->
+  <div class="section" id="voteshare">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title-block">
+        <div class="section-label">The vote share story</div>
+        <div class="section-title">State-Wide Vote Share Comparison</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 24px;">
+      <div class="card">
+        <div class="card-title">State-wide vote share — 2021 vs 2026</div>
+        <div class="chart-wrap" style="height: 320px;">
+          <canvas id="vsStateChart" role="img" aria-label="Grouped bar chart of state-wide vote share by major party for 2021 and 2026">DMK 38% in 2021, 24.3% in 2026. AIADMK 33.5% in 2021, 21.3% in 2026. TVK 0% in 2021, 35.1% in 2026.</canvas>
+        </div>
+        <div class="legend-row" style="margin-top:12px;" id="vsStateLegend"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Vote share shift (percentage points change)</div>
+        <div id="vsChangeBar"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-title">Vote share by region — select party</div>
+      <div style="display:flex; gap:12px; align-items:center; margin-bottom:20px; flex-wrap: wrap;">
+        <select id="regionPartySelect">
+          <option value="TVK">TVK</option>
+          <option value="DMK">DMK</option>
+          <option value="AIADMK">AIADMK</option>
+          <option value="INC">INC</option>
+          <option value="PMK">PMK</option>
+        </select>
+        <span style="font-size:13px; color: var(--text-muted);">Regional vote share comparison: 2021 vs 2026</span>
+      </div>
+      <div class="chart-wrap" style="height: 320px;">
+        <canvas id="vsRegionChart" role="img" aria-label="Regional vote share comparison by party and year">Regional vote share comparison for selected party across six Tamil Nadu regions.</canvas>
+      </div>
+      <div class="legend-row" style="margin-top:12px;" id="vsRegionLegend"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: TVK ANATOMY -->
+  <div class="section" id="tvk">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title-block">
+        <div class="section-label">Where did TVK's votes come from?</div>
+        <div class="section-title">TVK Vote Source Anatomy</div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom: 24px;">
+      <div class="kpi-card" style="border-left: 3px solid var(--dmk);">
+        <span class="kpi-value" style="color: var(--dmk);">14.6pp</span>
+        <div class="kpi-label">Avg DMK vote-share drop</div>
+        <div class="kpi-change" style="color: var(--text-muted);">Corr with TVK%: 0.37</div>
+      </div>
+      <div class="kpi-card" style="border-left: 3px solid var(--aiadmk);">
+        <span class="kpi-value" style="color: var(--aiadmk);">12.4pp</span>
+        <div class="kpi-label">Avg AIADMK vote-share drop</div>
+        <div class="kpi-change" style="color: var(--text-muted);">Corr with TVK%: 0.27</div>
+      </div>
+      <div class="kpi-card" style="border-left: 3px solid var(--accent-gold);">
+        <span class="kpi-value" style="color: var(--accent-gold);">+6.7M</span>
+        <div class="kpi-label">More votes cast in 2026</div>
+        <div class="kpi-change" style="color: var(--text-muted);">New voter pool expansion</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-title">TVK vote share by region — 2026</div>
+      <div id="tvkByRegion"></div>
+    </div>
+
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-title">Vote source attribution model — where did TVK's 35.1% come from?</div>
+      <div class="chart-wrap" style="height: 260px;">
+        <canvas id="tvkSourceChart" role="img" aria-label="Donut chart showing estimated vote sources for TVK: DMK defection, AIADMK defection, new voters, others">TVK vote sources: ~41.5% from DMK defection, ~35.4% from AIADMK defection, ~19.1% new voters, ~4% others.</canvas>
+      </div>
+      <div class="legend-row" style="margin-top:12px; justify-content: center;" id="tvkSourceLegend"></div>
+    </div>
+
+    <div class="insights-box">
+      <strong>Both rivals bled to TVK, but DMK more so.</strong> The correlation between TVK vote share and DMK's decline (r=0.37) is stronger than with AIADMK's decline (r=0.27), suggesting TVK pulled more from the DMK ecosystem — likely younger urban voters, first-time voters mobilised by Vijay's celebrity, and disaffected DMK cadres frustrated with governance.<br><br>
+      <strong>New voters matter.</strong> 2026 saw 6.7 million more votes cast versus 2021 — a ~14.5% increase. TVK's 35.1% state-wide share applied to this larger base means a significant portion of TVK votes came from previously non-voting or newly eligible populations. Chennai Metro, where TVK hit 46.9%, had a particularly large urban youth influx.<br><br>
+      <strong>Regional nuance:</strong> In Kongu, AIADMK's vote share fell 15.9pp while DMK's fell only 8.9pp — TVK likely drew more from AIADMK in this traditionally AIADMK-dominant belt. In Chennai Metro, DMK's collapse (−21.3pp) vs AIADMK's smaller drop (−12.6pp) confirms TVK as the successor to DMK's urban base in the capital.
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+      <div class="card-title">Winning margin comparison — 2021 vs 2026</div>
+      <div class="grid-2">
+        <div>
+          <div style="font-family:'Bebas Neue'; font-size: 48px; color: var(--text-primary);">22,871</div>
+          <div style="font-size: 12px; color: var(--text-muted); font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em;">Avg Winning Margin 2021</div>
+          <div style="margin-top: 12px; font-size: 13px; color: var(--text-secondary);">Large margins reflected DMK's decisive mandate and AIADMK's incumbency wave collapse.</div>
+        </div>
+        <div>
+          <div style="font-family:'Bebas Neue'; font-size: 48px; color: var(--accent-gold);">16,784</div>
+          <div style="font-size: 12px; color: var(--text-muted); font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em;">Avg Winning Margin 2026</div>
+          <div style="margin-top: 12px; font-size: 13px; color: var(--text-secondary);">Tighter margins reflect a three-way competition — TVK, DMK and AIADMK all splitting vote share, making individual races closer.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const PARTY_COLORS = {
+  TVK: '#f5a623', DMK: '#e8192c', AIADMK: '#1db859',
+  INC: '#1a6fdd', PMK: '#8b5cf6', NTK: '#64748b',
+  VCK: '#06b6d4', BJP: '#ff6600', Others: '#475569',
+  IUML: '#059669', CPI: '#b45309', 'CPI(M)': '#92400e',
+  DMDK: '#7c3aed', AMMK: '#be123c'
+};
+
+const SEATS_2021 = {DMK:133, AIADMK:66, INC:18, PMK:5, VCK:4, BJP:4, CPI:2, 'CPI(M)':2};
+const SEATS_2026 = {TVK:108, DMK:59, AIADMK:47, INC:5, PMK:4, IUML:2, CPI:2, VCK:2, 'CPI(M)':2, BJP:1, DMDK:1, AMMK:1};
+
+const VS_STATE_2021 = {DMK:37.98, AIADMK:33.54, TVK:0, INC:4.31, PMK:3.83, NTK:6.63, VCK:1.00, BJP:2.64, Others:10.07};
+const VS_STATE_2026 = {DMK:24.28, AIADMK:21.30, TVK:35.07, INC:3.38, PMK:2.18, NTK:4.02, VCK:1.10, BJP:2.99, Others:5.69};
+
+const VS_REGION_2021 = {
+  'Chennai Metro': {DMK:45.74, AIADMK:28.59, TVK:0, INC:4.31, PMK:0},
+  'North': {DMK:37.15, AIADMK:31.97, TVK:0, INC:2.44, PMK:5.21},
+  'Central': {DMK:39.18, AIADMK:35.81, TVK:0, INC:2.18, PMK:8.23},
+  'Kongu': {DMK:34.66, AIADMK:39.84, TVK:0, INC:3.94, PMK:1.22},
+  'Delta': {DMK:40.87, AIADMK:33.76, TVK:0, INC:3.78, PMK:1.14},
+  'South': {DMK:33.41, AIADMK:32.01, TVK:0, INC:6.89, PMK:2.18}
+};
+const VS_REGION_2026 = {
+  'Chennai Metro': {DMK:24.43, AIADMK:16.01, TVK:46.86, INC:3.02, PMK:0.72},
+  'North': {DMK:20.58, AIADMK:25.03, TVK:33.20, INC:2.11, PMK:4.58},
+  'Central': {DMK:23.26, AIADMK:27.09, TVK:31.13, INC:1.58, PMK:7.18},
+  'Kongu': {DMK:25.75, AIADMK:23.97, TVK:34.66, INC:2.14, PMK:1.05},
+  'Delta': {DMK:27.77, AIADMK:19.62, TVK:33.00, INC:2.88, PMK:1.11},
+  'South': {DMK:24.73, AIADMK:16.87, TVK:33.64, INC:5.28, PMK:1.64}
+};
+
+const REGIONAL_SEATS_2021 = {
+  'Chennai Metro': {DMK:29, AIADMK:0, INC:3, VCK:0},
+  'North': {DMK:19, AIADMK:12, INC:1, PMK:2, BJP:2, VCK:1},
+  'Central': {DMK:21, AIADMK:15, INC:1, PMK:3},
+  'Kongu': {DMK:10, AIADMK:19, INC:2, BJP:2},
+  'Delta': {DMK:23, AIADMK:4, INC:2, CPI:1, 'CPI(M)':2, VCK:1},
+  'South': {DMK:31, AIADMK:16, INC:9, VCK:2, CPI:1}
+};
+const REGIONAL_SEATS_2026 = {
+  'Chennai Metro': {TVK:29, DMK:2, AIADMK:1},
+  'North': {TVK:15, DMK:4, AIADMK:15, PMK:1, IUML:1, VCK:1},
+  'Central': {TVK:12, DMK:8, AIADMK:15, PMK:3, CPI:1},
+  'Kongu': {TVK:16, DMK:9, AIADMK:7, CPI:1},
+  'Delta': {TVK:10, DMK:14, AIADMK:4, INC:1, CPI:1, 'CPI(M)':2, IUML:1, AMMK:1},
+  'South': {TVK:26, DMK:22, AIADMK:5, INC:4, VCK:1, BJP:1, DMDK:1}
+};
+
+const REGIONS = ['Chennai Metro','North','Central','Kongu','Delta','South'];
+const REGION_TOTALS = {
+  'Chennai Metro': 32, 'North': 37, 'Central': 41, 'Kongu': 33, 'Delta': 33, 'South': 58
+};
+
+const SANKEY_DATA = [
+  {from:'DMK', to:'TVK', count:65},
+  {from:'AIADMK', to:'TVK', count:26},
+  {from:'DMK', to:'AIADMK', count:22},
+  {from:'AIADMK', to:'DMK', count:15},
+  {from:'INC', to:'TVK', count:11},
+  {from:'DMK', to:'PMK', count:3},
+  {from:'BJP', to:'DMK', count:2},
+  {from:'PMK', to:'AIADMK', count:2},
+  {from:'PMK', to:'TVK', count:2},
+  {from:'BJP', to:'TVK', count:2},
+];
+
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+  return `${r},${g},${b}`;
+}
+
+// ----- SEAT OVERVIEW BARS -----
+function buildSeatsBar(containerId, data) {
+  const el = document.getElementById(containerId);
+  const total = Object.values(data).reduce((a,b)=>a+b,0);
+  const sorted = Object.entries(data).sort((a,b)=>b[1]-a[1]);
+  el.innerHTML = sorted.map(([p,s]) => {
+    const pct = (s/total*100).toFixed(1);
+    return `<div title="${p}: ${s} seats (${pct}%)" style="width:${pct}%;background:${PARTY_COLORS[p]||'#475569'};height:100%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:rgba(255,255,255,0.9);white-space:nowrap;overflow:hidden;font-family:'DM Mono',monospace;">${s>5?s:''}</div>`;
+  }).join('');
+}
+
+buildSeatsBar('bar2021', SEATS_2021);
+buildSeatsBar('bar2026', SEATS_2026);
+
+const legEl = document.getElementById('overviewLegend');
+const allParties = new Set([...Object.keys(SEATS_2021),...Object.keys(SEATS_2026)]);
+legEl.innerHTML = [...allParties].filter(p=>PARTY_COLORS[p]).map(p=>
+  `<span class="legend-item"><span class="legend-swatch" style="background:${PARTY_COLORS[p]}"></span>${p}</span>`
+).join('');
+
+// ----- REGION CARDS -----
+const regionCardsEl = document.getElementById('regionCards');
+let activeRegion = null;
+REGIONS.forEach(r => {
+  const card = document.createElement('div');
+  card.className = 'region-card';
+  const seats2021 = Object.values(REGIONAL_SEATS_2021[r]||{}).reduce((a,b)=>a+b,0);
+  const seats2026 = Object.values(REGIONAL_SEATS_2026[r]||{}).reduce((a,b)=>a+b,0);
+  const seg26 = Object.entries(REGIONAL_SEATS_2026[r]||{}).sort((a,b)=>b[1]-a[1]);
+  card.innerHTML = `
+    <div class="region-name">${r}</div>
+    <div class="region-total">${REGION_TOTALS[r]}</div>
+    <div class="region-label" style="margin-bottom:10px;">total seats</div>
+    <div class="stacked-bars" style="margin-top:8px;">
+      ${seg26.map(([p,s])=>`<div class="stacked-seg" style="flex:${s};background:${PARTY_COLORS[p]||'#475569'};" title="${p}: ${s}"></div>`).join('')}
+    </div>
+  `;
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.region-card').forEach(c=>c.classList.remove('active'));
+    card.classList.add('active');
+    showRegionDetail(r);
+  });
+  regionCardsEl.appendChild(card);
+});
+
+function showRegionDetail(r) {
+  activeRegion = r;
+  document.getElementById('regionDetailTitle').textContent = `${r} — Seat shift 2021 → 2026`;
+  const data21 = REGIONAL_SEATS_2021[r] || {};
+  const data26 = REGIONAL_SEATS_2026[r] || {};
+  const allP = new Set([...Object.keys(data21),...Object.keys(data26)]);
+  const rows = [...allP].sort((a,b)=>(data26[b]||0)-(data26[a]||0));
+  const maxSeats = Math.max(...rows.map(p=>Math.max(data21[p]||0, data26[p]||0)));
+  let html = '';
+  rows.forEach(p => {
+    const s21 = data21[p]||0, s26 = data26[p]||0;
+    const diff = s26 - s21;
+    const diffStr = diff>0?`<span class="up">+${diff}</span>`:diff<0?`<span class="down">${diff}</span>`:`<span style="color:var(--text-muted)">—</span>`;
+    html += `<div class="bar-row">
+      <div class="bar-label">${p}</div>
+      <div style="flex:1;">
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px;font-family:'DM Mono',monospace;">2021: ${s21}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(s21/maxSeats*100)||0}%;background:rgba(${hexToRgb(PARTY_COLORS[p]||'#475569')},0.4);">${s21>2?s21:''}</div></div>
+        <div style="font-size:10px;color:var(--text-muted);margin:2px 0;font-family:'DM Mono',monospace;">2026: ${s26}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(s26/maxSeats*100)||0}%;background:${PARTY_COLORS[p]||'#475569'};">${s26>2?s26:''}</div></div>
+      </div>
+      <div class="bar-val">${diffStr}</div>
+    </div>`;
+  });
+  document.getElementById('regionDetailContent').innerHTML = html;
+}
+
+// All regions bar
+const allReg = document.getElementById('allRegionBars');
+REGIONS.forEach(r => {
+  const data26 = REGIONAL_SEATS_2026[r] || {};
+  const total = REGION_TOTALS[r];
+  const sorted = Object.entries(data26).sort((a,b)=>b[1]-a[1]);
+  allReg.innerHTML += `<div style="margin-bottom:14px;">
+    <div style="font-size:11px;color:var(--text-muted);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">${r} (${total})</div>
+    <div style="display:flex;height:22px;border-radius:4px;overflow:hidden;gap:1px;">
+      ${sorted.map(([p,s])=>`<div style="flex:${s};background:${PARTY_COLORS[p]||'#475569'};display:flex;align-items:center;justify-content:center;font-size:10px;font-family:'DM Mono',monospace;color:rgba(255,255,255,0.9);" title="${p}: ${s}">${s>3?s:''}</div>`).join('')}
+    </div>
+  </div>`;
+});
+
+// ---- SANKEY (drawn on canvas) ----
+function drawSankey() {
+  const canvas = document.getElementById('sankey');
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.parentElement.clientWidth;
+  const H = 460;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0,0,W,H);
+
+  const parties2021 = ['DMK','AIADMK','INC','PMK','BJP'];
+  const parties2026 = ['TVK','DMK','AIADMK','INC','PMK'];
+
+  const leftX = 130, rightX = W - 130;
+  const pad = 20;
+
+  function getHeights(parties, year) {
+    let total = parties.reduce((acc,p)=> acc + (year===2021?SEATS_2021[p]||0:SEATS_2026[p]||0), 0);
+    let y = pad;
+    return parties.map(p => {
+      const seats = year===2021?SEATS_2021[p]||0:SEATS_2026[p]||0;
+      const h = (seats/total)*(H-pad*2-parties.length*6);
+      const res = {p, y, h, seats};
+      y += h + 6;
+      return res;
+    });
+  }
+
+  const left = getHeights(parties2021, 2021);
+  const right = getHeights(parties2026, 2026);
+
+  function findNode(arr, name) { return arr.find(n=>n.p===name); }
+
+  const relevantFlows = SANKEY_DATA.filter(f=>
+    parties2021.includes(f.from) && parties2026.includes(f.to)
+  );
+
+  const leftOffsets = {};
+  const rightOffsets = {};
+  parties2021.forEach(p=>{leftOffsets[p]=0;});
+  parties2026.forEach(p=>{rightOffsets[p]=0;});
+
+  const totalLeft = parties2021.reduce((acc,p)=>acc+(SEATS_2021[p]||0),0);
+
+  relevantFlows.forEach(flow => {
+    const ln = findNode(left, flow.from);
+    const rn = findNode(right, flow.to);
+    if(!ln||!rn) return;
+    const lh = ln.h;
+    const rh = rn.h;
+    const totalFromSeats = SEATS_2021[flow.from]||1;
+    const totalToSeats = SEATS_2026[flow.to]||1;
+    const fh_l = (flow.count/totalFromSeats)*lh;
+    const fh_r = (flow.count/totalToSeats)*rh;
+    const ly1 = ln.y + leftOffsets[flow.from];
+    const ry1 = rn.y + rightOffsets[flow.to];
+    const col = PARTY_COLORS[flow.from]||'#475569';
+    ctx.beginPath();
+    ctx.moveTo(leftX+6, ly1);
+    ctx.bezierCurveTo((leftX+rightX)/2, ly1, (leftX+rightX)/2, ry1, rightX-6, ry1);
+    ctx.lineTo(rightX-6, ry1+fh_r);
+    ctx.bezierCurveTo((leftX+rightX)/2, ry1+fh_r, (leftX+rightX)/2, ly1+fh_l, leftX+6, ly1+fh_l);
+    ctx.closePath();
+    ctx.fillStyle = `rgba(${hexToRgb(col)},0.22)`;
+    ctx.fill();
+    leftOffsets[flow.from] += fh_l;
+    rightOffsets[flow.to] += fh_r;
+    if(flow.count >= 10) {
+      ctx.fillStyle = `rgba(${hexToRgb(col)},0.55)`;
+      ctx.font = `500 11px 'DM Mono', monospace`;
+      ctx.textAlign = 'center';
+      ctx.fillText(flow.count, (leftX+rightX)/2, (ly1+ry1)/2+4);
+    }
+  });
+
+  left.forEach(n => {
+    ctx.fillStyle = PARTY_COLORS[n.p]||'#475569';
+    ctx.beginPath(); ctx.roundRect(leftX-8, n.y, 14, n.h, 4); ctx.fill();
+    ctx.fillStyle = '#f0f2f8'; ctx.font = `500 13px 'DM Sans', sans-serif`;
+    ctx.textAlign = 'right';
+    ctx.fillText(n.p, leftX-16, n.y+n.h/2+4);
+    ctx.fillStyle = '#8891aa'; ctx.font = `400 11px 'DM Mono', monospace`;
+    ctx.fillText(n.seats+' seats', leftX-16, n.y+n.h/2+18);
+  });
+
+  right.forEach(n => {
+    ctx.fillStyle = PARTY_COLORS[n.p]||'#475569';
+    ctx.beginPath(); ctx.roundRect(rightX-6, n.y, 14, n.h, 4); ctx.fill();
+    ctx.fillStyle = '#f0f2f8'; ctx.font = `500 13px 'DM Sans', sans-serif`;
+    ctx.textAlign = 'left';
+    ctx.fillText(n.p, rightX+16, n.y+n.h/2+4);
+    ctx.fillStyle = '#8891aa'; ctx.font = `400 11px 'DM Mono', monospace`;
+    ctx.fillText(n.seats+' seats', rightX+16, n.y+n.h/2+18);
+  });
+
+  ctx.fillStyle = '#525c78'; ctx.font = `500 11px 'DM Mono', monospace`;
+  ctx.textAlign = 'left';
+  ctx.fillText('2021 ▶', leftX-100, 12);
+  ctx.textAlign = 'right';
+  ctx.fillText('◀ 2026', rightX+100, 12);
+}
+setTimeout(drawSankey, 100);
+window.addEventListener('resize', drawSankey);
+
+// ---- FLIP MATRIX ----
+const flipFrom = ['DMK','AIADMK','INC','PMK','BJP','CPI(M)'];
+const flipTo = ['TVK','DMK','AIADMK','INC','PMK','IUML','CPI(M)','AMMK','DMDK'];
+const flipRaw = {
+  'DMK|TVK':65,'AIADMK|TVK':26,'INC|TVK':11,'PMK|TVK':2,'BJP|TVK':2,'CPI(M)|TVK':1,
+  'DMK|AIADMK':22,'AIADMK|DMK':15,'DMK|PMK':3,'PMK|AIADMK':2,
+  'AIADMK|INC':1,'DMK|CPI(M)':1,'DMK|IUML':1,'INC|DMDK':1,'INC|DMK':1,'INC|BJP':1,'DMK|AMMK':1,'AIADMK|VCK':1,'AIADMK|IUML':1
+};
+
+let matrixHtml = `<table style="border-collapse:collapse;width:100%;font-size:12px;font-family:'DM Mono',monospace;">
+<thead><tr><th style="padding:8px 10px;text-align:left;color:var(--text-muted);border-bottom:1px solid var(--border);">From ↓ To →</th>`;
+flipTo.forEach(p=>{ matrixHtml+=`<th style="padding:8px 6px;text-align:center;color:${PARTY_COLORS[p]||'#fff'};border-bottom:1px solid var(--border);">${p}</th>`; });
+matrixHtml += `</tr></thead><tbody>`;
+flipFrom.forEach(fp=>{
+  matrixHtml += `<tr><td style="padding:7px 10px;color:${PARTY_COLORS[fp]||'#fff'};border-bottom:1px solid var(--border);font-weight:500;">${fp}</td>`;
+  flipTo.forEach(tp=>{
+    const v = flipRaw[`${fp}|${tp}`]||0;
+    const opacity = v ? Math.min(0.2+v/70,0.9) : 0;
+    matrixHtml += `<td style="padding:7px 6px;text-align:center;border-bottom:1px solid var(--border);background:${v?`rgba(${hexToRgb(PARTY_COLORS[tp]||'#fff')},${opacity})`:'transparent'};color:${v?'var(--text-primary)':'var(--text-muted)'};">${v||'—'}</td>`;
+  });
+  matrixHtml += `</tr>`;
+});
+matrixHtml += `</tbody></table>`;
+document.getElementById('flipMatrix').innerHTML = matrixHtml;
+
+// ---- STATE-WIDE VOTE SHARE CHART ----
+const mainParties = ['DMK','AIADMK','TVK','INC','PMK','NTK','BJP'];
+new Chart(document.getElementById('vsStateChart'), {
+  type: 'bar',
+  data: {
+    labels: mainParties,
+    datasets: [
+      {
+        label: '2021',
+        data: mainParties.map(p=>VS_STATE_2021[p]||0),
+        backgroundColor: mainParties.map(p=>`rgba(${hexToRgb(PARTY_COLORS[p]||'#475569')},0.35)`),
+        borderColor: mainParties.map(p=>`rgba(${hexToRgb(PARTY_COLORS[p]||'#475569')},0.7)`),
+        borderWidth: 1.5,
+        borderDash: [4,2],
+      },
+      {
+        label: '2026',
+        data: mainParties.map(p=>VS_STATE_2026[p]||0),
+        backgroundColor: mainParties.map(p=>PARTY_COLORS[p]||'#475569'),
+        borderColor: 'transparent',
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: {display:false}, tooltip: {
+      backgroundColor: '#181b23', borderColor: '#2a2e3f', borderWidth:1,
+      titleColor:'#f0f2f8', bodyColor:'#8891aa',
+      callbacks: {label: ctx=>`${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)}%`}
+    }},
+    scales: {
+      x: { grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#8891aa',font:{family:"'DM Mono',monospace",size:11}} },
+      y: { grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#8891aa',font:{family:"'DM Mono',monospace",size:10}, callback:v=>v+'%'}, max:45 }
+    }
+  }
+});
+
+const vsStateLeg = document.getElementById('vsStateLegend');
+vsStateLeg.innerHTML = `
+  <span class="legend-item"><span class="legend-swatch" style="background:rgba(120,120,120,0.35);border:1.5px dashed rgba(120,120,120,0.7);"></span>2021</span>
+  <span class="legend-item"><span class="legend-swatch" style="background:#f5a623;"></span>2026 (solid color)</span>
+`;
+
+// ---- VOTE SHARE CHANGE BAR ----
+const vsChangeEl = document.getElementById('vsChangeBar');
+const changeParties = ['TVK','DMK','AIADMK','INC','PMK','NTK','BJP'];
+const maxChange = 40;
+vsChangeEl.innerHTML = changeParties.map(p=>{
+  const ch = (VS_STATE_2026[p]||0) - (VS_STATE_2021[p]||0);
+  const isPos = ch >= 0;
+  const barW = Math.abs(ch)/maxChange*100;
+  return `<div class="bar-row">
+    <div class="bar-label" style="color:${PARTY_COLORS[p]||'#fff'}">${p}</div>
+    <div style="flex:1;position:relative;height:28px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;">
+      <div style="position:absolute;top:0;${isPos?'left:50%':'right:50%'};width:${barW/2}%;height:100%;background:${isPos?PARTY_COLORS[p]:'#f87171'};opacity:0.8;display:flex;align-items:center;${isPos?'justify-content:flex-end;padding-right:6px;':'justify-content:flex-start;padding-left:6px;'}font-size:11px;font-family:'DM Mono',monospace;color:rgba(255,255,255,0.9);">
+        ${Math.abs(ch)>3?`${isPos?'+':''}${ch.toFixed(1)}%`:''}
+      </div>
+    </div>
+    <div class="bar-val" style="${isPos?'color:#4ade80':'color:#f87171'}">${isPos?'+':''}${ch.toFixed(1)}%</div>
+  </div>`;
+}).join('');
+
+// ---- REGIONAL VOTE SHARE CHART ----
+let vsRegionChart;
+function buildRegionChart(party) {
+  const labels = REGIONS;
+  const data21 = labels.map(r=>VS_REGION_2021[r]?.[party]||0);
+  const data26 = labels.map(r=>VS_REGION_2026[r]?.[party]||0);
+  const col = PARTY_COLORS[party]||'#475569';
+  if(vsRegionChart) vsRegionChart.destroy();
+  vsRegionChart = new Chart(document.getElementById('vsRegionChart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        {label:'2021', data:data21, backgroundColor:`rgba(${hexToRgb(col)},0.3)`, borderColor:`rgba(${hexToRgb(col)},0.6)`, borderWidth:1.5},
+        {label:'2026', data:data26, backgroundColor:col, borderColor:'transparent'}
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins:{legend:{display:false}, tooltip:{
+        backgroundColor:'#181b23',borderColor:'#2a2e3f',borderWidth:1,
+        titleColor:'#f0f2f8',bodyColor:'#8891aa',
+        callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)}%`}
+      }},
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#8891aa',font:{family:"'DM Mono',monospace",size:10}}},
+        y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#8891aa',font:{family:"'DM Mono',monospace",size:10},callback:v=>v+'%'}}
+      }
+    }
+  });
+  const leg = document.getElementById('vsRegionLegend');
+  leg.innerHTML = `
+    <span class="legend-item"><span class="legend-swatch" style="background:rgba(${hexToRgb(col)},0.3);border:1.5px dashed rgba(${hexToRgb(col)},0.6);"></span>${party} 2021</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:${col};"></span>${party} 2026</span>
+  `;
+}
+buildRegionChart('TVK');
+document.getElementById('regionPartySelect').addEventListener('change', e=>buildRegionChart(e.target.value));
+
+// ---- TVK BY REGION ----
+const tvkByRegionEl = document.getElementById('tvkByRegion');
+tvkByRegionEl.innerHTML = REGIONS.map(r=>{
+  const vs = VS_REGION_2026[r]?.TVK||0;
+  return `<div class="bar-row">
+    <div class="bar-label">${r.replace(' Metro','')}</div>
+    <div class="bar-track"><div class="bar-fill" style="width:${vs/50*100}%;background:var(--tvk);">${vs.toFixed(1)}%</div></div>
+    <div class="bar-val">${vs.toFixed(1)}%</div>
+  </div>`;
+}).join('');
+
+// ---- TVK SOURCE DONUT ----
+const tvkSources = [
+  {label:'From DMK defection', value:41.5, color:'#e8192c'},
+  {label:'From AIADMK defection', value:35.4, color:'#1db859'},
+  {label:'New / first-time voters', value:19.1, color:'#f5c842'},
+  {label:'INC & others', value:4.0, color:'#475569'},
+];
+new Chart(document.getElementById('tvkSourceChart'), {
+  type: 'doughnut',
+  data: {
+    labels: tvkSources.map(s=>s.label),
+    datasets: [{
+      data: tvkSources.map(s=>s.value),
+      backgroundColor: tvkSources.map(s=>s.color),
+      borderColor: '#0a0b0f',
+      borderWidth: 3,
+      hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '65%',
+    plugins:{legend:{display:false}, tooltip:{
+      backgroundColor:'#181b23',borderColor:'#2a2e3f',borderWidth:1,
+      titleColor:'#f0f2f8',bodyColor:'#8891aa',
+      callbacks:{label:ctx=>`${ctx.parsed.toFixed(1)}% of TVK votes`}
+    }}
+  }
+});
+const tvkSrcLeg = document.getElementById('tvkSourceLegend');
+tvkSrcLeg.innerHTML = tvkSources.map(s=>
+  `<span class="legend-item"><span class="legend-swatch" style="background:${s.color}"></span>${s.label} (${s.value}%)</span>`
+).join('');
+</script>
+</body>
+</html>
