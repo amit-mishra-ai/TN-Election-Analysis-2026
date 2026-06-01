@@ -7,7 +7,7 @@ An end-to-end political data analytics project analyzing the transformation of T
 - Python
 - Pandas
 - Plotly
-- Power BI
+- Power BI 
 - Claude AI
 - Interactive HTML Dashboard
 
